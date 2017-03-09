@@ -4,7 +4,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 /*
- * @autor: juan.sanchezc@udea.edu.co
+ * @author: juan.sanchezc@udea.edu.co
  */
 
 /*
