@@ -11,6 +11,9 @@ import co.edu.udea.iw.dao.CiudadDAO;
 import co.edu.udea.iw.dao.DataSource;
 import co.edu.udea.iw.dto.Ciudad;
 import co.edu.udea.iw.exception.ExceptionHandler;
+/*
+ * author:juan.sanchezc@udea.edu.co
+ */
 
 public class CiudadDAOImpl implements CiudadDAO{
 	
@@ -21,7 +24,7 @@ public class CiudadDAOImpl implements CiudadDAO{
 		ResultSet rs = null;
 		List<Ciudad> lista = new ArrayList<Ciudad>();
 		try {
-			con = DataSource.getConnection();
+			con = DataSource.getSingletonConnection();
 			ps = con.prepareStatement("SELECT * FROM ciudades");
 			rs = ps.executeQuery();
 			//Se itera el resultado de la consulta realizada y se muestra en consola
@@ -43,7 +46,37 @@ public class CiudadDAOImpl implements CiudadDAO{
 				throw new ExceptionHandler("Error cerrando conexcion", e2);
 			}
 		}
-		return null;
+		return lista;
+	}
+
+	@Override
+	public Ciudad obtener(Long codigo) throws ExceptionHandler {
+		PreparedStatement ps = null;
+		Connection con = null;
+		ResultSet rs = null;
+		Ciudad ciudad = new Ciudad();
+		try {
+			con = DataSource.getSingletonConnection();
+			ps = con.prepareStatement("SELECT * FROM ciudades WHERE codigo=?");
+			ps.setLong(1, codigo);
+			rs = ps.executeQuery();
+			if(rs.next()){
+				ciudad.setCodigo(rs.getLong("codigo"));
+				ciudad.setNombre(rs.getString("Nombre"));
+				ciudad.setCodigoArea(rs.getString("codigoArea"));
+			}
+		} catch (Exception e) {
+			throw new ExceptionHandler("Error al ejecutar la consulta", e);
+		}finally {
+			try {
+				if(rs != null) rs.close();
+				if(ps != null) ps.close();
+				if(con != null) con.close();
+			} catch (SQLException e2) {
+				throw new ExceptionHandler("Error cerrando conexcion", e2);
+			}
+		}
+		return ciudad;
 	}
 
 }

@@ -5,9 +5,15 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 import co.edu.udea.iw.exception.ExceptionHandler;
+/*
+ * author: juan.sanchezc@udea.edu.co
+ */
 
+//Clase para establecer retonar una conexión a la base de datos ejemploweb
 public class DataSource {
-	public static Connection getConnection() throws ExceptionHandler{
+	private static Connection connection;
+	
+	private static Connection getConnection() throws ExceptionHandler{
 		//Variable para obtener una conexión a la base de datos
 		Connection con=null;
 		//Se carga el driver para manejar MySQL
@@ -21,5 +27,17 @@ public class DataSource {
 			throw new ExceptionHandler("Connection not established",e);
 		}
 		return con;		
+	}
+	
+	public static Connection getSingletonConnection() throws ExceptionHandler{
+		try {
+			if(connection == null || connection.isClosed()){
+				connection = getConnection();
+			}
+		} catch (SQLException e) {
+			throw new ExceptionHandler("Connection not established", e);
+		}
+		
+		return connection;
 	}
 }
