@@ -5,20 +5,33 @@ import static org.junit.Assert.*;
 import java.util.List;
 
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.iw.dao.CiudadDAO;
 import co.edu.udea.iw.dto.Ciudad;
 import co.edu.udea.iw.exception.ExceptionHandler;
+import javassist.ClassPath;
 
+/*
+ * Author: juan.sanchezc@udea.edu.co
+ */
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@Transactional
+@ContextConfiguration(locations="classpath:co/edu/udea/iw/conf/Spring-Configuration.xml")
 public class CiudadDAOImplTest {
-
+	@Autowired
+	CiudadDAO ciudadDAO = null;
+	
 	@Test
-	public void testGetAll() {
-		CiudadDAO ciudadDao = null;
+	public void testGetAll() {		
 		List<Ciudad> ciudades = null;
 		try {
-			ciudadDao = new CiudadDAOImpl();
-			ciudades = ciudadDao.getAll();
+			ciudades = ciudadDAO.getAll();
 			assertTrue(ciudades.size() > 0);
 		}
 		catch(ExceptionHandler e) {
@@ -29,11 +42,9 @@ public class CiudadDAOImplTest {
 	
 	@Test
 	public void testGetByCode() {
-		CiudadDAO ciudadDAO = null;
 		Ciudad ciudad = null;
 		long codigo = 1;
 		try {
-			ciudadDAO = new CiudadDAOImpl();
 			ciudad = ciudadDAO.getByCode(codigo);
 			assertTrue(ciudad != null);
 		}
