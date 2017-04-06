@@ -26,7 +26,7 @@ public class DataSource {
 	public Session getSession() throws ExceptionHandler {
 		try {
 			if(factory == null) {
-				conf.configure("com/udea/edu/iw/config/hibernate.cfg.xml");
+				conf.configure("com/udea/edu/iw/conf/hibernate.cfg.xml");
 				factory = conf.buildSessionFactory();
 			}
 			return factory.openSession();
