@@ -3,6 +3,13 @@ package co.edu.udea.iw.dto;
 import java.util.Date;
 import java.util.Set;
 
+/*
+ * @author juan.sanchezc@udea.edu.co
+ */
+
+/*
+ * POJO que representa una entidad Cliente de la tabla clientes
+ */
 public class Cliente {
 	private String cedula;
 	private String nombres;
@@ -15,6 +22,7 @@ public class Cliente {
 	private Boolean eliminado;
 	private Usuario usuarioElimina;
 	private Date fechaEliminacion;
+	//Variable que contiene la lista de todas las direcciones asociadas un cliente
 	private Set<Direccion> direcciones;
 	
 	public String getCedula() {

@@ -8,18 +8,25 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
+
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.transaction.annotation.Transactional;
 
 import co.edu.udea.iw.dao.CiudadDAO;
 import co.edu.udea.iw.dto.Ciudad;
 import co.edu.udea.iw.exception.ExceptionHandler;
-import javassist.ClassPath;
 
 /*
- * Author: juan.sanchezc@udea.edu.co
+ * @author: juan.sanchezc@udea.edu.co
  */
 
+/*
+ * Implementacion de pruebas sobre los metodos de CiudadDAOImpl
+ */
+
+/*
+ * Anotaciones necesarias para que las pruebas se corran usando Spring
+ */
 @RunWith(SpringJUnit4ClassRunner.class)
 @Transactional
 @ContextConfiguration(locations="classpath:co/edu/udea/iw/conf/Spring-Configuration.xml")
@@ -27,6 +34,9 @@ public class CiudadDAOImplTest {
 	@Autowired
 	CiudadDAO ciudadDAO = null;
 	
+	/*
+	 * Prueba para el metodo getALL()
+	 */
 	@Test
 	public void testGetAll() {		
 		List<Ciudad> ciudades = null;
@@ -40,6 +50,9 @@ public class CiudadDAOImplTest {
 		}
 	}
 	
+	/*
+	 * Prueba para el metodo getByCode()
+	 */
 	@Test
 	public void testGetByCode() {
 		Ciudad ciudad = null;

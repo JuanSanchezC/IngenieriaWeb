@@ -1,5 +1,12 @@
 package co.edu.udea.iw.dto;
 
+/*
+ * @author juan.sanchezc@udea.edu.co
+ */
+
+/*
+ * POJO que representa entidades Usuario de la tabla usuarios
+ */
 public class Usuario {
 	private String login;
 	private String nombres;

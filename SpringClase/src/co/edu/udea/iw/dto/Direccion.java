@@ -1,6 +1,14 @@
 package co.edu.udea.iw.dto;
 
+/*
+ * @author juan.sanchezc@udea.edu.co
+ */
+
+/*
+ * POJO que representa una entidad Direccion de la tabla direcciones
+ */
 public class Direccion {
+	// clave compuesta reprentada por un objeto DireccionID
 	private DireccionId direccionId;
 	private String telefono;
 	private Ciudad ciudad;

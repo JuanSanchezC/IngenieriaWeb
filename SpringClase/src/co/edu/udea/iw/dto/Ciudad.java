@@ -1,10 +1,12 @@
 /*
-*	@author = "Carlos Jiménez"
+* @author juan.sanchezc@udea.edu.co
 */
 
 package co.edu.udea.iw.dto;
 
-//* POJO that represents the ciudad entity in data base.
+/*
+ * POJO que representa una entidad Ciudad de la tabla ciudades
+ */
 public class Ciudad {
 	private	long	codigo;
 	private	String nombre;

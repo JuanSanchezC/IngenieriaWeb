@@ -1,5 +1,12 @@
 package co.edu.udea.iw.dto;
 
+/*
+ * @author juan.sanchezc@udea.edu.co
+ */
+
+/*
+ * POJO que representa entidades Rol de la tabla roles
+ */
 public class Rol {
 	private String codigo;
 	private String nombre;
