@@ -50,4 +50,17 @@ public class UsuarioDAOImpl implements UsuarioDAO{
 		}
 		return lista;
 	}
+	
+	@Override
+	public Usuario getByLogin(String login) throws ExceptionHandler {
+		Usuario usuario = new Usuario();
+		Session session = null;
+		try {
+			session = sessionFactory.getCurrentSession();
+			usuario = (Usuario) session.get(Usuario.class, login);
+		} catch (HibernateException e) {
+			throw new ExceptionHandler("No se pudo consultar al usuario", e);
+		}
+		return usuario;
+	}
 }

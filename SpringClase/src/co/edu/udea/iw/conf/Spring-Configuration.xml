@@ -45,4 +45,11 @@
 	<bean id="usuarioDAO" class="co.edu.udea.iw.dao.impl.UsuarioDAOImpl">
 		<property name="sessionFactory" ref="sessionFactory"/>
 	</bean>
+	<bean id="clienteBL" class="co.edu.udea.iw.bl.ClienteBL">
+		<property name="clienteDAO" ref="clienteDAO"/>
+		<property name="usuarioDAO" ref="usuarioDAO"/>
+	</bean>
+	<bean id="usuarioBL" class="co.edu.udea.iw.bl.UsuarioBL">
+		<property name="usuarioDAO" ref="usuarioDAO"/>
+	</bean>
 </beans>

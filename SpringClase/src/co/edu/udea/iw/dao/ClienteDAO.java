@@ -30,4 +30,6 @@ public interface ClienteDAO {
 	 * entrada en la tabla Cliente
 	 */
 	public boolean createClient(Cliente cliente) throws ExceptionHandler;
+	
+	//crear obtener dada cedula
 }

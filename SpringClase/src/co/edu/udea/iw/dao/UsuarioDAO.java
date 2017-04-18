@@ -22,4 +22,9 @@ public interface UsuarioDAO {
 	 * la lista de Usuarios
 	 */
 	public List<Usuario> getALL() throws ExceptionHandler;
+	
+	/*
+	 * Definicion de método para obtener un usuario dado su login
+	 */
+	public Usuario getByLogin(String login) throws ExceptionHandler;
 }
