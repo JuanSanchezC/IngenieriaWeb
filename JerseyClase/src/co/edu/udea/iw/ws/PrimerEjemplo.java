@@ -28,8 +28,8 @@ public class PrimerEjemplo {
 		return "<h1>Nuevo puto saludo</h1>";
 	}
 	
-	@POST
-	@Produces(MediaType.APPLICATION_XML)
+	@GET
+	@Produces(MediaType.TEXT_HTML)
 	@Path("3")
 	public String saludar3(@QueryParam("a")String nombre){
 		return "Hola puto "+nombre;
@@ -37,8 +37,8 @@ public class PrimerEjemplo {
 	
 	@POST
 	@Produces(MediaType.TEXT_HTML)
-	@Path("4/{a}")
-	public String saludar4(@PathParam("a") String nombre){
+	@Path("4")
+	public String saludar4(@QueryParam("a") String nombre){
 		return "Hola puto "+nombre;
 	}
 }

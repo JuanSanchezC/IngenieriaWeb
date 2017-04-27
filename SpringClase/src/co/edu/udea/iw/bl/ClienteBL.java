@@ -3,6 +3,8 @@ package co.edu.udea.iw.bl;
 import java.util.Date;
 import java.util.List;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import co.edu.udea.iw.dao.ClienteDAO;
 import co.edu.udea.iw.dao.UsuarioDAO;
 import co.edu.udea.iw.dto.Cliente;
@@ -17,6 +19,7 @@ import co.edu.udea.iw.exception.ExceptionHandler;
  * Sirve para agregar todos los métodos que va a 
  * utilizar la entidad Cliente
  */
+@Transactional
 public class ClienteBL {
 	private ClienteDAO clienteDAO;
 	private UsuarioDAO usuarioDAO;

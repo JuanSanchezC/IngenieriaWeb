@@ -1,5 +1,7 @@
 package co.edu.udea.iw.bl;
 
+import org.springframework.transaction.annotation.Transactional;
+
 import co.edu.udea.iw.dao.UsuarioDAO;
 import co.edu.udea.iw.dto.Usuario;
 import co.edu.udea.iw.exception.ExceptionHandler;
@@ -12,6 +14,7 @@ import co.edu.udea.iw.exception.ExceptionHandler;
  * Sirve para agregar todos los métodos que va a 
  * utilizar la entidad usuario
  */
+@Transactional
 public class UsuarioBL {
 	private UsuarioDAO usuarioDAO;
 	
@@ -28,14 +31,26 @@ public class UsuarioBL {
 	 * @paran pass: contraseña del usuario
 	 * @return userExist: bandera indica la validación del usuario
 	 */
-	public Boolean validateUser(String login, String pass) throws ExceptionHandler{
-		Boolean userExist = false;
+	public Boolean validateUser(String login, String pass) throws ExceptionHandler{	
 		
-		Usuario usuario = usuarioDAO.getByLogin(login);
-		if(usuario != null && usuario.getContrasena().equals(pass)){
-			userExist = true;
+		if(login == null || login.isEmpty()){
+			throw new ExceptionHandler("campo no puede estar vacio");
 		}
 		
-		return userExist;
+		if(pass == null || pass.isEmpty()){
+			throw new ExceptionHandler("campo no puede estar vacio");
+		}
+		
+		Usuario usuario = usuarioDAO.getByLogin(login);
+		
+		if(usuario == null){
+			throw new ExceptionHandler("usuario no existe");
+		}
+		
+		if(!usuario.getContrasena().equals(pass)){
+			throw new ExceptionHandler("usuario o contraseña invalido");
+		}
+		
+		return true;
 	}
 }

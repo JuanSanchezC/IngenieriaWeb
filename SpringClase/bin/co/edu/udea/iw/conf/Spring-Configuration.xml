@@ -52,4 +52,6 @@
 	<bean id="usuarioBL" class="co.edu.udea.iw.bl.UsuarioBL">
 		<property name="usuarioDAO" ref="usuarioDAO"/>
 	</bean>
+	<tx:annotation-driven/>
+	<context:component-scan base-package="co.edu.udea.iw.ws"></context:component-scan>
 </beans>
