@@ -13,7 +13,7 @@ cuestionario.controller('contCuestionario', ['$scope', function($scope){
 			respuestas:[
 				{id: 1,	texto: 'Respuesta 1.1'},
 				{id: 2,	texto: 'Respuesta 1.2'},
-				{id: 1,	texto: 'Respuesta 1.3'}
+				{id: 3,	texto: 'Respuesta 1.3'}
 			]
 		},
 		{
@@ -25,8 +25,7 @@ cuestionario.controller('contCuestionario', ['$scope', function($scope){
 			respuestas:[
 				{id: 1,	texto: 'Respuesta 2.1'},
 				{id: 2,	texto: 'Respuesta 2.2'},
-				{id: 1,	texto: 'Respuesta 2.3'
-				}
+				{id: 3,	texto: 'Respuesta 2.3'}
 			]
 		},
 		{
@@ -38,8 +37,7 @@ cuestionario.controller('contCuestionario', ['$scope', function($scope){
 			respuestas:[
 				{id: 1,	texto: 'Respuesta 3.1'},
 				{id: 2,	texto: 'Respuesta 3.2'},
-				{id: 1,	texto: 'Respuesta 3.3'
-				}
+				{id: 3,	texto: 'Respuesta 3.3'}
 			]
 		}
 	];
@@ -53,7 +51,7 @@ cuestionario.controller('contCuestionario', ['$scope', function($scope){
 			pregunta.estado = 'ok';
 		}else{
 			if($scope.respuestasCorrectas > 0 && pregunta.estado == 'ok'){
-				$scope.respuestasCorrectas--;
+				$scope.respuestasCorrectas--;				
 			}
 			pregunta.estado = 'error';
 		}
