@@ -54,6 +54,7 @@ cuestionario.controller('contCuestionario', ['$scope', function($scope){
 				$scope.respuestasCorrectas--;				
 			}
 			pregunta.estado = 'error';
+			
 		}
 		estadoUsuario();
 	};
