@@ -1,6 +1,5 @@
 package co.edu.udea.iw.ws;
 
-import javax.websocket.server.PathParam;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.Path;
