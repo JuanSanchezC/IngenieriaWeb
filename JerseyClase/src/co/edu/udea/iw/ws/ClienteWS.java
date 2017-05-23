@@ -11,6 +11,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -28,6 +29,7 @@ import co.edu.udea.iw.exception.ExceptionHandler;
 public class ClienteWS {
 	@Autowired
 	ClienteBL clienteBL;
+	Logger log = Logger.getLogger(getClass());
 	
 	@POST	
 	@Produces(MediaType.TEXT_HTML)
@@ -37,6 +39,7 @@ public class ClienteWS {
 		try {
 			clienteBL.createClient(cedula, nombres, apellidos, email, usuarioCrea);
 		} catch (ExceptionHandler e) {
+			log.error(e);
 			throw new RemoteException("Error creando cliente", e);
 		}
 	}
